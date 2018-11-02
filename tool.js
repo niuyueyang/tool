@@ -559,3 +559,20 @@ function GetRequest() {
 	return obj;
 }
 
+//获取file本地路径
+// var url = getFileURL(this.files[0]);//把当前的 files[0] 传进去
+//    if (url) {
+//        videoId.src = url;
+//    }
+function getFileURL(file) {
+    var getUrl = null;
+    if (window.createObjectURL != undefined) { // basic
+        getUrl = window.createObjectURL(file);
+    } else if (window.URL != undefined) { // mozilla(firefox)
+        getUrl = window.URL.createObjectURL(file);
+    } else if (window.webkitURL != undefined) { // webkit or chrome
+        getUrl = window.webkitURL.createObjectURL(file);
+    }
+    return getUrl;
+}
+
